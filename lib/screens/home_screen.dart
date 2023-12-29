@@ -16,7 +16,7 @@ class HomeScreen extends StatelessWidget {
         children: [
           // Agrega la imagen
           Image.asset(
-            'assets/noticiero.jpg', // Ajusta la ruta de la imagen según tu proyecto
+            'assets/imagenes/noticiero.jpg', 
             width: 200,
             height: 200,
             fit: BoxFit.cover,
