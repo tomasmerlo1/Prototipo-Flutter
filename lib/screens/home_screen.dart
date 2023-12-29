@@ -5,49 +5,53 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("INICIO"),
-        centerTitle: true,
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Image.asset(
-              'imagenes/noticiero.jpg',
-              width: 300,
-              height: 300,
-              fit: BoxFit.cover,
-            ),
-            SizedBox(height: 18),
-            Text(
-              'BAHIA NOTICIAS',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('imagenes/noticiero.jpg'),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SizedBox(height: 10),
+              Text(
+                'BAHIA NOTICIAS',
+                style: TextStyle(
+                  fontSize: 40,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white, 
+                ),
               ),
-            ),
-            SizedBox(height: 8),
-            Text(
-              'Enterate de todas las noticias del día a día en Bahía Blanca',
-              style: TextStyle(
-                fontSize: 16,
+              SizedBox(height: 0.7),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ListViewScreen()),
+                  );
+                },
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all<Color>(Color.fromARGB(237, 238, 239, 255)),
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(18.0),
+                    ),
+                  ),
+                ),
+                child: Text(
+                  'Ir a Noticias',
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.blue,
+                  ),
+                ),
               ),
-              textAlign: TextAlign.center,
-            ),
-            SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: () {
-                // Navegar a la segunda pantalla al hacer clic en el botón
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => ListViewScreen()),
-                );
-              },
-              child: Text('Ir a Noticias'),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
