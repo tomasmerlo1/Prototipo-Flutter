@@ -10,8 +10,41 @@ class HomeScreen extends StatelessWidget {
         title: const Text("Home Screen"),
         centerTitle: true,
       ),
-      body: const Center(
-        child: Text('Widget'),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          // Agrega la imagen
+          Image.asset(
+            'assets/noticiero.jpg', // Ajusta la ruta de la imagen según tu proyecto
+            width: 200,
+            height: 200,
+            fit: BoxFit.cover,
+          ),
+          SizedBox(height: 16),
+          // Agrega el título
+          Text(
+            'BAHIA NOTICIAS',
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          SizedBox(height: 8),
+          // Agrega la breve descripción
+          Text(
+            'Enterate de todas las noticias del dia a dia en Bahia Blanca',
+            style: TextStyle(
+              fontSize: 16,
+            ),
+            textAlign: TextAlign.center,
+),
+        SizedBox(height: 16),
+          // Contenido original
+          const Center(
+            child: Text('Widget Original'),
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
