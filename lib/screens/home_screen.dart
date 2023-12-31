@@ -17,7 +17,6 @@ class HomeScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox(height: 10),
               Text(
                 'BAHIA NOTICIAS',
                 style: TextStyle(
