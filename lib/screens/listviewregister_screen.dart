@@ -1,115 +1,62 @@
+import 'package:aplication_noticias/screens/noticias_model.dart';
 import 'package:flutter/material.dart';
+import 'package:aplication_noticias/screens/noticias_detalle_screen.dart';
 
 class ListViewScreen extends StatelessWidget {
-  const ListViewScreen({super.key});
+  final List<Noticias> noticiasList = [
+    Noticias(
+      titulo: "Olimpo de Bahía Blanca estimó pérdidas millonarias por el temporal",
+      descripcion: "El inclemente fenómeno climático causó destrozos en las instalaciones de los 'aurinegros' el pasado 16 de diciembre",
+      contenidototal: "El temporal que afectó a Bahía Blanca y zonas aledañas el pasado 16 de diciembre provocó destrozos por “al menos 68 millones de pesos” en Olimpo, según dio a conocer en un comunicado la institución aurinegra del sur de la provincia de Buenos Aires. A través de sus redes la entidad detalló los daños que sufrió el club y las cifras que estiman requerirán para normalizar la situación, en la que señala que el sector más afectado es el natatorio de calle Rodríguez, cuya “restauración total del techo y los vidrios se presupuestó en 30 millones de pesos”. Además notificaron que ya comenzaron con las refacciones. El fenómeno climático causó, entre otros daños, la rotura de un paredón, una pantalla gigante, paredes y cielorrasos de cabinas del estadio 'Roberto Carminatti' de Avenida Colón y Ángel Brunel, roturas en el techo y de vidrios de su natatorio, así como otros inconvenientes en los predios de la calle Don Bosco y Bottoni.",
+      imagen: "imagenes/noticia_clubOlimpo.jpg",
+    )
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
-        children: [
-          Container(
-            color: Colors.lightBlue,
-            padding: EdgeInsets.all(15),
-            child: const Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Icon(Icons.contact_emergency),
-                Text('All Contacts'),
-                Icon(Icons.add_call)
-              ],
+      appBar: AppBar(
+        title: Text("Noticias"),
+        backgroundColor: Colors.white, 
+      ),
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('imagenes/noticiero.jpg'),
+            fit: BoxFit.cover,
+            colorFilter: ColorFilter.mode(
+              Colors.black.withOpacity(0.5), 
+              BlendMode.darken,
             ),
           ),
-          Container(
-            color: Colors.grey,
-            padding: EdgeInsets.all(15),
-            child: const Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Sofia Gonzalez',
-                  style: TextStyle(
-                    fontSize: 24.0,
-                    fontWeight: FontWeight.bold,
-                  ),
+        ),
+        child: ListView.builder(
+          itemCount: noticiasList.length,
+          itemBuilder: (context, index) {
+            Noticias noticia = noticiasList[index];
+            return Card(
+              margin: EdgeInsets.all(8),
+              child: ListTile(
+                title: Text(
+                  noticia.titulo,
+                  style: TextStyle(color: const Color.fromARGB(255, 12, 50, 82)), 
                 ),
-                SizedBox(
-                    height: 0.0), // Espaciado entre el título y el subtítulo
-                Text(
-                  'sofiagonzalez@gmail.com',
-                  style: TextStyle(
-                    fontSize: 16.0,
-                    fontStyle: FontStyle.italic,
-                  ),
+                subtitle: Text(
+                  noticia.descripcion,
+                  style: TextStyle(color: Colors.blue), 
                 ),
-                Text(
-                  'Tomas Merlo',
-                  style: TextStyle(
-                    fontSize: 24.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                SizedBox(
-                    height: 0.0), // Espaciado entre el título y el subtítulo
-                Text(
-                  'tomasmerlo2018@gmail.com',
-                  style: TextStyle(
-                    fontSize: 16.0,
-                    fontStyle: FontStyle.italic,
-                  ),
-                ),
-                Text(
-                  'Macarena Huarte',
-                  style: TextStyle(
-                    fontSize: 24.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                SizedBox(
-                    height: 0.0), // Espaciado entre el título y el subtítulo
-                Text(
-                  'macarenahuarte@gmail.com',
-                  style: TextStyle(
-                    fontSize: 16.0,
-                    fontStyle: FontStyle.italic,
-                  ),
-                ),
-                Text(
-                  'Lionel Messi',
-                  style: TextStyle(
-                    fontSize: 24.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                SizedBox(
-                    height: 0.0), // Espaciado entre el título y el subtítulo
-                Text(
-                  'pulgita@gmail.com',
-                  style: TextStyle(
-                    fontSize: 16.0,
-                    fontStyle: FontStyle.italic,
-                  ),
-                ),
-                Text(
-                  'Angel Di Maria',
-                  style: TextStyle(
-                    fontSize: 24.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                SizedBox(
-                    height: 0.0), // Espaciado entre el título y el subtítulo
-                Text(
-                  'fideo@gmail.com',
-                  style: TextStyle(
-                    fontSize: 16.0,
-                    fontStyle: FontStyle.italic,
-                  ),
-                )
-              ],
-            ),
-          ),
-        ],
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => NoticiaDetalleScreen(noticia: noticia),
+                    ),
+                  );
+                },
+              ),
+            );
+          },
+        ),
       ),
     );
   }
