@@ -49,14 +49,12 @@ class HomeScreen extends StatelessWidget {
                     color: Colors.blue,
                   ),
                 ),
-              ),
+              ), 
             ],
           ),
         ),
         
-      ),
-      
+      ), 
     );
-    
   }
 }
