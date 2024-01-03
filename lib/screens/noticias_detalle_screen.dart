@@ -58,4 +58,35 @@ class NoticiaDetalleScreen extends StatelessWidget {
       ),
     );
   }
+  @override
+Widget _buildAlternativo(BuildContext context) {
+  return Scaffold(
+    appBar: AppBar(
+        title: Text(noticia.titulo),
+      ),
+    body: Container(
+      // ... el resto de tu código ...
+      child: Center(
+        child: Container(
+          // ... el resto de tu código ...
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              // ... el resto de tu código ...
+              ElevatedButton(
+                onPressed: () {
+                  // Aquí se ejecutará la acción al presionar el botón
+                 Navigator.pushNamed(context, '/noticias_model');
+                },
+                child: Text('Noticias del día'),
+              ),
+            ],
+          ),
+        ),
+      ),
+    ),
+  );
+}
+
 }
