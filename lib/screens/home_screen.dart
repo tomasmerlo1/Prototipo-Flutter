@@ -1,4 +1,5 @@
 import 'package:aplication_noticias/screens/listviewregister_screen.dart';
+import 'package:aplication_noticias/screens/noticias_model.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -49,11 +50,12 @@ class HomeScreen extends StatelessWidget {
                     color: Colors.blue,
                   ),
                 ),
-              ),
+              ), 
             ],
           ),
         ),
-      ),
+        
+      ), 
     );
   }
 }

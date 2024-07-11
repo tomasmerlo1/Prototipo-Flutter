@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class Noticias {
   final String titulo;
   final String descripcion;
@@ -5,10 +7,12 @@ class Noticias {
   final String imagen;
 
 
- Noticias({
-  required this.titulo,
-  required this.descripcion,
-  required this.contenidototal,
-  required this.imagen
- });
+  Noticias({
+    required this.titulo,
+    required this.descripcion,
+    required this.contenidototal,
+    required this.imagen,
+  });
+
 }
+
