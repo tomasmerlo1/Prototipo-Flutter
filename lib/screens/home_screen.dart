@@ -22,7 +22,7 @@ class HomeScreen extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 40,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white, 
+                  color: Colors.white,
                 ),
               ),
               SizedBox(height: 0.7),
@@ -34,7 +34,8 @@ class HomeScreen extends StatelessWidget {
                   );
                 },
                 style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all<Color>(Color.fromARGB(237, 238, 239, 255)),
+                  backgroundColor: MaterialStateProperty.all<Color>(
+                      Color.fromARGB(237, 238, 239, 255)),
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(18.0),
