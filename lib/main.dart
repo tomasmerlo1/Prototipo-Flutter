@@ -1,3 +1,4 @@
+import 'package:aplication_noticias/screens/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:aplication_noticias/screens/home_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'NOTICIAS ARG',
-      home: HomeScreen(),
+      home: MainScreen(),
     );
   }
 }

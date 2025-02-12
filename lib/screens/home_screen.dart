@@ -1,20 +1,33 @@
-import 'package:aplication_noticias/screens/listviewregister_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:aplication_noticias/screens/login_screen.dart';
+import 'package:aplication_noticias/services/news_api.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  final NewsApi _newsApi = NewsApi();
+  late Future<List<dynamic>> _news;
+
+  @override
+  void initState() {
+    super.initState();
+    _news = _newsApi.fetchNews();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('BAHIA NOTICIAS'),
         backgroundColor: Colors.transparent,
-        elevation: 0, // Para hacer que el AppBar sea transparente
+        elevation: 0,
         actions: [
           IconButton(
             icon: Icon(Icons.person),
             onPressed: () {
-              // Navega a la pantalla de login
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => LoginScreen()),
@@ -23,54 +36,38 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('imagenes/noticiero.jpg'),
-            fit: BoxFit.cover,
-          ),
-        ),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(
-                'BAHIA NOTICIAS',
-                style: TextStyle(
-                  fontSize: 40,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
-              SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ListViewScreen()),
-                  );
-                },
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all<Color>(
-                      Color.fromARGB(237, 238, 239, 255)),
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                    RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(18.0),
-                    ),
+      body: FutureBuilder<List<dynamic>>(
+        future: _news,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(child: CircularProgressIndicator());
+          } else if (snapshot.hasError) {
+            return Center(child: Text('Error: ${snapshot.error}'));
+          } else {
+            final articles = snapshot.data!;
+            return ListView.builder(
+              itemCount: articles.length,
+              itemBuilder: (context, index) {
+                final article = articles[index];
+                return Card(
+                  margin: EdgeInsets.all(10),
+                  child: ListTile(
+                    leading: article['urlToImage'] != null
+                        ? Image.network(article['urlToImage'], width: 100, fit: BoxFit.cover)
+                        : null,
+                    title: Text(article['title']),
+                    subtitle: Text(article['description'] ?? ''),
+                    onTap: () {
+                      
+                    },
+                    
                   ),
-                ),
-                child: Text(
-                  'Ir a Noticias',
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.blue,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
+                
+                );
+              },
+            );
+          }
+        },
       ),
     );
   }
