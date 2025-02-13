@@ -2,6 +2,9 @@ import 'package:aplication_noticias/screens/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:aplication_noticias/screens/home_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:provider/provider.dart';
+import 'package:aplication_noticias/providers/news_provider.dart'; 
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -15,10 +18,20 @@ void main() async {
       measurementId: "G-M6MS6M5GJ8",
     ),
   );
-  runApp(MyApp());
+
+  // Inicializa NewsProvider y carga las noticias de SharedPreferences
+  final newsProvider = NewsProvider();
+  await newsProvider.loadNewsFromLocalStorage();
+
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => newsProvider), // Usa el Provider inicializado
+      ],
+      child: MyApp(),
+    ),
+  );
 }
-
-
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
