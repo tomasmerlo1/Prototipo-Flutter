@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:aplication_noticias/screens/home_screen.dart';
 import 'package:aplication_noticias/screens/listviewregister_screen.dart';
+import 'package:aplication_noticias/screens/search_screen.dart'; // Importar SearchScreen
 import 'package:aplication_noticias/screens/login_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:aplication_noticias/providers/theme_provider.dart';
@@ -16,8 +17,8 @@ class _MainScreenState extends State<MainScreen> {
   final List<Widget> _screens = [
     HomeScreen(), // Noticias de Argentina
     ListViewScreen(), // Categorías
-    Center(child: Text('Buscador')), // Pantalla de Buscador (puedes reemplazarla más tarde)
-    Center(child: Text('Configuración')), // Pantalla de Configuración (puedes reemplazarla más tarde)
+    SearchScreen(), // Buscador de noticias
+    Center(child: Text('Configuración')), // Configuración
   ];
 
   void _onItemTapped(int index) {
@@ -35,11 +36,10 @@ class _MainScreenState extends State<MainScreen> {
             title: Text('BAHIA NOTICIAS'),
             backgroundColor: Colors.blue,
             actions: [
-              // Botón para cambiar el tema
               IconButton(
                 icon: Icon(Icons.brightness_6),
                 onPressed: () {
-                  themeProvider.toggleTheme(); // Cambia el tema
+                  themeProvider.toggleTheme();
                 },
               ),
               IconButton(
@@ -75,6 +75,8 @@ class _MainScreenState extends State<MainScreen> {
             ],
             currentIndex: _selectedIndex,
             selectedItemColor: Colors.blue,
+            unselectedItemColor: Colors.grey,
+            backgroundColor: Colors.white,
             onTap: _onItemTapped,
           ),
         );

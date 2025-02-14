@@ -27,7 +27,6 @@ void main() async {
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => newsProvider), // Usa el NewsProvider
         ChangeNotifierProvider(create: (_) => ThemeProvider()), // Agrega el ThemeProvider
       ],
       child: MyApp(),
