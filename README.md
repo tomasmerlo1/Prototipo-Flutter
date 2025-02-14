@@ -1,6 +1,6 @@
-# Bahia Noticias - Simulador de Noticias App
+# ARG Noticias - Simulador de Noticias App
 
-Cree una aplicacion que simula las noticias de Bahia Blanca. Usa fundamentos de Flutter y usa widgets.
+Creamos una aplicacion que trae las noticias de Argentina y el mundo a traves de una API. Usa fundamentos de Flutter y usa widgets.
 
 ## Integrantes
 - Macarena Huarte
