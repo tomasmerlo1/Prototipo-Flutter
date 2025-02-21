@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:aplication_noticias/services/news_api.dart';
 
 class SearchScreen extends StatefulWidget {
+  const SearchScreen({super.key});
+
   @override
   _SearchScreenState createState() => _SearchScreenState();
 }
@@ -38,7 +40,6 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Buscar Noticias")),
       body: Column(
         children: [
           Padding(

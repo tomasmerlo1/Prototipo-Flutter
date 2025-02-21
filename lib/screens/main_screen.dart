@@ -7,6 +7,8 @@ import 'package:provider/provider.dart';
 import 'package:aplication_noticias/providers/theme_provider.dart';
 
 class MainScreen extends StatefulWidget {
+  const MainScreen({super.key});
+
   @override
   _MainScreenState createState() => _MainScreenState();
 }

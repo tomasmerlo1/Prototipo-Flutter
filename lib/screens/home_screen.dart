@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:aplication_noticias/screens/login_screen.dart';
 import 'package:aplication_noticias/services/news_api.dart';
 
 class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }

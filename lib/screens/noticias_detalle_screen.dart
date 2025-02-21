@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class NoticiaDetalleScreen extends StatelessWidget {
   final Noticias noticia;
 
-  NoticiaDetalleScreen({required this.noticia});
+  const NoticiaDetalleScreen({super.key, required this.noticia});
 
   @override
   Widget build(BuildContext context) {

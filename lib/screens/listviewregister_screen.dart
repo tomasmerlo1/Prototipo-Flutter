@@ -65,13 +65,12 @@ class ListViewScreen extends StatelessWidget {
     ),
   ];
 
+  ListViewScreen({super.key});
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Noticias"),
-        backgroundColor: Colors.white,
-      ),
+
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
