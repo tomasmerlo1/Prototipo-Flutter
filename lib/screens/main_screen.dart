@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:aplication_noticias/screens/home_screen.dart';
 import 'package:aplication_noticias/screens/listviewregister_screen.dart';
 import 'package:aplication_noticias/screens/search_screen.dart';
-import 'package:aplication_noticias/screens/login_screen.dart';
-import 'package:provider/provider.dart';
+import 'package:aplication_noticias/screens/login_screen.dart'; // Importa LoginScreen aquí
 import 'package:aplication_noticias/providers/theme_provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:provider/provider.dart';
+import 'package:aplication_noticias/screens/settings_screen.dart';
 
 class MainScreen extends StatefulWidget {
   final int initialIndex;
@@ -29,30 +29,7 @@ class _MainScreenState extends State<MainScreen> {
     HomeScreen(),
     ListViewScreen(),
     SearchScreen(),
-    Center(
-      child: FutureBuilder<SharedPreferences>(
-        future: SharedPreferences.getInstance(),
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            final prefs = snapshot.data!;
-            final email = prefs.getString('userEmail');
-
-            if (email != null) {
-              return Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text('Correo: $email'),
-                ],
-              );
-            } else {
-              return Text('Inicia sesión para ver tu perfil.');
-            }
-          } else {
-            return CircularProgressIndicator();
-          }
-        },
-      ),
-    ),
+    SettingsScreen(),
   ];
 
   void _onItemTapped(int index) {

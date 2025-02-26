@@ -69,7 +69,11 @@ class _LoginScreenState extends State<LoginScreen> {
         MaterialPageRoute(builder: (context) => MainScreen(initialIndex: 0)),
       );
     } on FirebaseAuthException catch (e) {
-      // ... (Manejo de errores de inicio de sesión)
+      // Manejo de errores de inicio de sesión
+      print("Error de inicio de sesión: ${e.code}");
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error al iniciar sesión. Verifica tus credenciales.')),
+      );
     } catch (e) {
       print(e);
     }
@@ -84,7 +88,11 @@ class _LoginScreenState extends State<LoginScreen> {
         SnackBar(content: Text('Se ha enviado un correo de restablecimiento de contraseña.')),
       );
     } on FirebaseAuthException catch (e) {
-      // ... (Manejo de errores)
+      // Manejo de errores
+      print("Error al restablecer la contraseña: ${e.code}");
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error al restablecer la contraseña. Verifica el correo.')),
+      );
     } catch (e) {
       print(e);
     }
