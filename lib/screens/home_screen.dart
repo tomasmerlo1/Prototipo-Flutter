@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:aplication_noticias/services/news_api.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:aplication_noticias/screens/noticia_detalle_api_screen.dart';
+import 'package:aplication_noticias/screens/noticias_detalle_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -59,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => NoticiaDetalleApiScreen(noticia: article),
+                          builder: (context) => NoticiaDetalleScreen(noticia: article),
                         ),
                       );
                     },
