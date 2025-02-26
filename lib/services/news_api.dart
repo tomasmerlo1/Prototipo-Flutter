@@ -1,22 +1,21 @@
-import 'dart:convert'; // Para convertir la respuesta JSON a un Map
-import 'package:http/http.dart' as http; // Para hacer solicitudes HTTP
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 
 class NewsApi {
-  final String _apiKey = '282cd54de7b44445a0bc119433a44355';
-  final String _baseUrl = 'https://newsapi.org/v2/top-headlines';
+  final String _apiKey = '92506cef0cb18679bc9f7303c333bf51'; // Reemplaza con tu clave
+  final String _baseUrl = 'http://api.mediastack.com/v1/news';
 
   // Método que hace la solicitud a la API
-  Future<List<dynamic>> fetchNews({String country = 'us'}) async {
-    final url = Uri.parse('$_baseUrl?country=$country&apiKey=$_apiKey');
-    
+  Future<List<dynamic>> fetchNews({String language = 'es', String country = 'ar'}) async {
+    final url = Uri.parse('$_baseUrl?access_key=$_apiKey&languages=$language&countries=$country');
+
     final response = await http.get(url);
 
     if (response.statusCode == 200) {
-      // Decodifica la respuesta JSON
       final Map<String, dynamic> json = jsonDecode(response.body);
-      return json['articles']; // Devuelve la lista de artículos
+      return json['data'] ?? []; // Verifica si hay artículos
     } else {
-      throw Exception('Error al cargar noticias');
+      throw Exception('Error al cargar noticias: ${response.statusCode}');
     }
   }
 }

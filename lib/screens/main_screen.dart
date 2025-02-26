@@ -36,7 +36,7 @@ class _MainScreenState extends State<MainScreen> {
         return Scaffold(
           appBar: AppBar(
             title: Text('BAHIA NOTICIAS'),
-            backgroundColor: Colors.blue,
+            backgroundColor: Colors.black,
             actions: [
               IconButton(
                 icon: Icon(Icons.brightness_6),
