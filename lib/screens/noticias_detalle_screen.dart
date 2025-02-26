@@ -1,4 +1,4 @@
-import 'package:aplication_noticias/screens/noticias_model.dart';
+import 'package:aplication_noticias/models/noticias_model.dart';
 import 'package:flutter/material.dart';
 
 class NoticiaDetalleScreen extends StatelessWidget {

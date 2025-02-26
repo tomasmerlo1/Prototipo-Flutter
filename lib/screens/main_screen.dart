@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:aplication_noticias/screens/home_screen.dart';
-import 'package:aplication_noticias/screens/listviewregister_screen.dart';
+import 'package:aplication_noticias/screens/Noticias_screen.dart';
 import 'package:aplication_noticias/screens/search_screen.dart';
 import 'package:aplication_noticias/screens/login_screen.dart'; // Importa LoginScreen aquí
 import 'package:aplication_noticias/providers/theme_provider.dart';
@@ -27,7 +27,7 @@ class _MainScreenState extends State<MainScreen> {
 
   final List<Widget> _screens = [
     HomeScreen(),
-    ListViewScreen(),
+    NoticiasScreen(),
     SearchScreen(),
     SettingsScreen(),
   ];
@@ -50,7 +50,7 @@ class _MainScreenState extends State<MainScreen> {
                 fontSize: 20.0,
                 fontWeight: FontWeight.bold,
               ),
-              child: Text('BAHIA NOTICIAS'),
+              child: Text('News APP'),
             ),
             backgroundColor: Colors.black,
             iconTheme: IconThemeData(color: Colors.white),
@@ -82,7 +82,7 @@ class _MainScreenState extends State<MainScreen> {
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.category),
-                label: 'Categorías',
+                label: 'Noticias',
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.search),
@@ -94,7 +94,7 @@ class _MainScreenState extends State<MainScreen> {
               ),
             ],
             currentIndex: _selectedIndex,
-            selectedItemColor: Colors.blue,
+            selectedItemColor: Colors.black,
             unselectedItemColor: Colors.grey,
             backgroundColor: Colors.white,
             onTap: _onItemTapped,

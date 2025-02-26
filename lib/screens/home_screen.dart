@@ -1,71 +1,50 @@
 import 'package:flutter/material.dart';
-import 'package:aplication_noticias/services/news_api.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'package:aplication_noticias/screens/noticias_detalle_screen.dart';
+import 'package:aplication_noticias/services/weather_api.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _HomeScreenClimaState createState() => _HomeScreenClimaState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
-  final NewsApi _newsApi = NewsApi();
-  late Future<List<dynamic>> _news;
+class _HomeScreenClimaState extends State<HomeScreen> {
+  final WeatherApi _weatherApi = WeatherApi();
+  late Future<Map<String, dynamic>> _weatherData;
 
   @override
   void initState() {
     super.initState();
-    _news = _newsApi.fetchNews();
+    _weatherData = _weatherApi.fetchWeather('Buenos Aires'); // Puedes cambiar la ciudad
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('BAHIA NOTICIAS'),
-      ),
-      body: FutureBuilder<List<dynamic>>(
-        future: _news,
+      appBar: AppBar(title: Text('Clima')),
+      body: FutureBuilder<Map<String, dynamic>>(
+        future: _weatherData,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
             return Center(child: Text('Error: ${snapshot.error}'));
           } else {
-            final articles = snapshot.data!;
-            return ListView.builder(
-              itemCount: articles.length,
-              itemBuilder: (context, index) {
-                final article = articles[index];
-                return Card(
-                  margin: EdgeInsets.all(10),
-                  child: ListTile(
-                    leading: article['image'] != null
-                        ? Image.network(article['image'], width: 100, fit: BoxFit.cover)
-                        : null,
-                    title: Text(article['title'] ?? 'Sin título'),
-                    subtitle: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(article['description'] ?? 'Sin descripción'),
-                        Text('Autor: ${article['author'] ?? 'Desconocido'}'),
-                        Text('Fecha: ${article['published_at'] ?? 'Sin fecha'}'),
-                        Text('Categoría: ${article['category'] is List ? article['category'].join(', ') : article['category'] ?? 'Sin categoría'}'),
-                      ],
-                    ),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => NoticiaDetalleScreen(noticia: article),
-                        ),
-                      );
-                    },
-                  ),
-                );
-              },
+            final data = snapshot.data!;
+            final temp = data['current']['temp_c']; // Temperatura en °C
+            final condition = data['current']['condition']['text']; // Estado del clima
+            final iconUrl = 'https:${data['current']['condition']['icon']}'; // Icono del clima
+
+            return Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.network(iconUrl, width: 100),
+                  Text('$temp°C', style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold)),
+                  Text(condition, style: TextStyle(fontSize: 20)),
+                  Text('Ciudad: ${data['location']['name']}', style: TextStyle(fontSize: 18)),
+                ],
+              ),
             );
           }
         },
