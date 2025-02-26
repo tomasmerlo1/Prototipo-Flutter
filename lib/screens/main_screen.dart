@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:aplication_noticias/screens/home_screen.dart';
 import 'package:aplication_noticias/screens/listviewregister_screen.dart';
-import 'package:aplication_noticias/screens/search_screen.dart'; // Importar SearchScreen
+import 'package:aplication_noticias/screens/search_screen.dart';
 import 'package:aplication_noticias/screens/login_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:aplication_noticias/providers/theme_provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class MainScreen extends StatefulWidget {
-  const MainScreen({super.key});
+  final int initialIndex;
+
+  MainScreen({this.initialIndex = 0});
 
   @override
   _MainScreenState createState() => _MainScreenState();
@@ -16,11 +19,40 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
 
+  @override
+  void initState() {
+    super.initState();
+    _selectedIndex = widget.initialIndex;
+  }
+
   final List<Widget> _screens = [
-    HomeScreen(), // Noticias de Argentina
-    ListViewScreen(), // Categorías
-    SearchScreen(), // Buscador de noticias
-    Center(child: Text('Configuración')), // Configuración
+    HomeScreen(),
+    ListViewScreen(),
+    SearchScreen(),
+    Center(
+      child: FutureBuilder<SharedPreferences>(
+        future: SharedPreferences.getInstance(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            final prefs = snapshot.data!;
+            final email = prefs.getString('userEmail');
+
+            if (email != null) {
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('Correo: $email'),
+                ],
+              );
+            } else {
+              return Text('Inicia sesión para ver tu perfil.');
+            }
+          } else {
+            return CircularProgressIndicator();
+          }
+        },
+      ),
+    ),
   ];
 
   void _onItemTapped(int index) {
@@ -35,8 +67,17 @@ class _MainScreenState extends State<MainScreen> {
       builder: (context, themeProvider, child) {
         return Scaffold(
           appBar: AppBar(
-            title: Text('BAHIA NOTICIAS'),
+            title: DefaultTextStyle(
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold,
+              ),
+              child: Text('BAHIA NOTICIAS'),
+            ),
             backgroundColor: Colors.black,
+            iconTheme: IconThemeData(color: Colors.white),
+            titleTextStyle: TextStyle(color: Colors.white),
             actions: [
               IconButton(
                 icon: Icon(Icons.brightness_6),

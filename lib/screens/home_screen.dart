@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:aplication_noticias/services/news_api.dart';
+import 'package:aplication_noticias/screens/noticia_detalle_api_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -43,11 +44,14 @@ class _HomeScreenState extends State<HomeScreen> {
                     title: Text(article['title']),
                     subtitle: Text(article['description'] ?? ''),
                     onTap: () {
-                      
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => NoticiaDetalleApiScreen(noticia: article),
+                        ),
+                      );
                     },
-                    
                   ),
-                
                 );
               },
             );
