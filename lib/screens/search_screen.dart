@@ -21,7 +21,7 @@ class _SearchScreenState extends State<SearchScreen> {
   }
 
   void _fetchNews() async {
-    final news = await _newsApi.fetchNews();
+    final news = await _newsApi.fetchTopNews();
     setState(() {
       _filteredNews = news;
     });

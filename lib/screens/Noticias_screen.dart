@@ -16,7 +16,7 @@ class _NoticiasScreenState extends State<NoticiasScreen> {
   @override
   void initState() {
     super.initState();
-    _news = _newsApi.fetchNews();
+    _news = _newsApi.fetchTopNews();
   }
 
   @override
