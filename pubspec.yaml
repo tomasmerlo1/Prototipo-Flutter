@@ -35,5 +35,5 @@ flutter:
   uses-material-design: true
 
   assets:
-  - imagenes/ultimomomento.jpg
+  - images/
   
