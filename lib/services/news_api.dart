@@ -4,9 +4,6 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 
 class NewsApi {
-  //final String _apiKey = '9e4de6acaf1ea61c4c40fbf1206831e0';
-  //final String _baseUrl = 'http://api.mediastack.com/v1/news';
-
   final String _baseUrl = "${dotenv.env['API_URL']}";
 
   Future<List<Map<String, dynamic>>> fetchTopNews(
@@ -25,7 +22,6 @@ class NewsApi {
           'image': article['image'] ?? '',
           'author': article['author'] ?? '',
           'published_at': article['published_at'] ?? '',
-          //'category': article['category'],
           'source': article['source'] ?? 'Desconocido',
           'url': article['url'] ?? '',
         };

@@ -4,7 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';
 import 'package:aplication_noticias/providers/news_provider.dart';
-import 'package:aplication_noticias/providers/theme_provider.dart'; // Importa el ThemeProvider
+import 'package:aplication_noticias/providers/theme_provider.dart';
 
 void main() async {
   await dotenv.load(fileName: ".env");
@@ -21,7 +21,6 @@ void main() async {
     ),
   );
 
-  // Inicializa NewsProvider y carga las noticias de SharedPreferences
   final newsProvider = NewsProvider();
   await newsProvider.loadNewsFromLocalStorage();
 
@@ -29,7 +28,7 @@ void main() async {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(
-            create: (_) => ThemeProvider()), // Agrega el ThemeProvider
+            create: (_) => ThemeProvider()),
       ],
       child: MyApp(),
     ),
@@ -45,7 +44,7 @@ class MyApp extends StatelessWidget {
       builder: (context, themeProvider, child) {
         return MaterialApp(
           title: 'NOTICIAS ARG',
-          theme: themeProvider.currentTheme, // Aplica el tema
+          theme: themeProvider.currentTheme,
           home: MainScreen(),
         );
       },
