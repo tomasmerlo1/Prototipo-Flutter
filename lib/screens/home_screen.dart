@@ -21,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     _weatherData = _weatherApi.fetchWeather('Buenos Aires');
-    _newsData = _newsApi.fetchTopNews(); // 🔹 Corregido, ahora usa _newsApi
+    _newsData = _newsApi.fetchTopNews(); 
   }
 
   @override
