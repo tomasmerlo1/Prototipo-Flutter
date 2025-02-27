@@ -41,35 +41,35 @@ Pasos para instalar y configurar tu proyecto localmente.
    Que lo busca en CMD y pone ipconfig y va hasta la linea  Dirección IPv4 y copia su ip y lo coloca en lugar del mio
    
 ## Uso
-El proyecto fue realizado y probado en una virtualización del Pixel 8 Android 15.0("VanillaIceCream") x86_64
+El proyecto fue realizado y probado en una virtualización del Pixel 8 Android 15.0("VanillaIceCream") | x86_64
 
 ## Funcionamiento
 Desde la pantalla principal se puede apreciar un menu touch en la parte de abajo, donde si apretas una de esos iconos , veras la parte de noticias, buscador y perfil. en la parte sueperior derecha vas a encontrar el modo noche o dia y para iniciar sesion 
 
 ## Contenido
 - Models:
-* noticias_model.dart
+  * `noticias_model.dart`
 
 - Providers:
-* news_provider.dart
-* theme_provider.dart
+  * `news_provider.dart`
+  * `theme_provider.dart`
 
 - Screens:
-* home_screen.dart
-* login_screen.dart
-* main_screen.dart
-* noticias_detalle_api_screen.dart
-* Noticias_screen.dart
-* search_screen.dart
-* settings_screen.dart
+  * `home_screen.dart`
+  * `login_screen.dart`
+  * `main_screen.dart`
+  * `noticias_detalle_api_screen.dart`
+  * `Noticias_screen.dart`
+  * `search_screen.dart`
+  * `settings_screen.dart`
 
 - Services:
-* news_api.dart
-* shared_prefs_service.dart
-* weather_api.dart
+  * `news_api.dart`
+  * `shared_prefs_service.dart`
+  * `weather_api.dart`
 
 - Widgets:
-* noticias_card.dart
+  * `noticias_card.dart`
 
 ## Pantallas
 - Home
