@@ -11,11 +11,7 @@ Creamos una aplicacion que trae las noticias de Argentina y el mundo a traves de
 - [Descripción](#descripción)
 - [Instalación](#instalación)
 - [Funcionamiento](#funcionamiento)
-- [Models](#models)
-- [Providers](#providers)
-- [Screens](#screens)
-- [Services](#services)
-- [Widgets](#widgets)
+- [Contenido](#contenido)
 - [Pantallas](#pantallas)
 - [Uso](#uso)
 
@@ -50,14 +46,15 @@ El proyecto fue realizado y probado en una virtualización del Pixel 8 Android 1
 ## Funcionamiento
 Desde la pantalla principal se puede apreciar un menu touch en la parte de abajo, donde si apretas una de esos iconos , veras la parte de noticias, buscador y perfil. en la parte sueperior derecha vas a encontrar el modo noche o dia y para iniciar sesion 
 
-## Models
+## Contenido
+- Models
 * noticias_model.dart
 
-## Providers
+- Providers
 * news_provider.dart
 * theme_provider.dart
 
-## Screens
+- Screens
 * home_screen.dart
 * login_screen.dart
 * main_screen.dart
@@ -66,12 +63,12 @@ Desde la pantalla principal se puede apreciar un menu touch en la parte de abajo
 * search_screen.dart
 * settings_screen.dart
 
-## Services
+- Services
 * news_api.dart
 * shared_prefs_service.dart
 * weather_api.dart
 
-## Widgets
+- Widgets
 * noticias_card.dart
 
 ## Pantallas
