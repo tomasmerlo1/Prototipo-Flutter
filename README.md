@@ -82,8 +82,8 @@ Desde la pantalla principal se puede apreciar un menu touch en la parte de abajo
 
 - Configuraciones/Perfil
 <img src="./readme/images/perfilclaro.png" />
-<img src="./readme/images/perfiloscuro.png" />
-<img src="./readme/images/noticiasclarassinsesion.png" />
+<img src="./readme/images/perdiloscuro.png" />
+<img src="./readme/images/perfilclarosinsesion.png" />
 
 - Registarse / Inicio Sesion
 <img src="./readme/images/iniciosesionclaro.png" />
