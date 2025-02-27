@@ -1,18 +1,21 @@
 import 'dart:convert';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 import 'package:http/http.dart' as http;
 
 class NewsApi {
-  final String _apiKey = '9e4de6acaf1ea61c4c40fbf1206831e0';
-  final String _baseUrl = 'http://api.mediastack.com/v1/news';
+  //final String _apiKey = '9e4de6acaf1ea61c4c40fbf1206831e0';
+  //final String _baseUrl = 'http://api.mediastack.com/v1/news';
 
-  Future<List<Map<String, dynamic>>> fetchTopNews({String language = 'es', String country = 'ar'}) async {
-    final url = Uri.parse('$_baseUrl?access_key=$_apiKey&languages=$language&countries=$country');
+  final String _baseUrl = "${dotenv.env['API_URL']}";
 
-    final response = await http.get(url);
+  Future<List<Map<String, dynamic>>> fetchTopNews(
+      {String language = 'es', String country = 'ar'}) async {
+    final response = await http.get(Uri.parse(_baseUrl));
 
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
-      final List articles = data['data'];
+      final List articles = data;
 
       return articles.map((article) {
         return {
@@ -22,7 +25,7 @@ class NewsApi {
           'image': article['image'] ?? '',
           'author': article['author'] ?? '',
           'published_at': article['published_at'] ?? '',
-          'category': article['category'],
+          //'category': article['category'],
           'source': article['source'] ?? 'Desconocido',
           'url': article['url'] ?? '',
         };

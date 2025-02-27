@@ -1,11 +1,13 @@
 import 'package:aplication_noticias/screens/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';
 import 'package:aplication_noticias/providers/news_provider.dart';
 import 'package:aplication_noticias/providers/theme_provider.dart'; // Importa el ThemeProvider
 
 void main() async {
+  await dotenv.load(fileName: ".env");
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: FirebaseOptions(
@@ -26,7 +28,8 @@ void main() async {
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => ThemeProvider()), // Agrega el ThemeProvider
+        ChangeNotifierProvider(
+            create: (_) => ThemeProvider()), // Agrega el ThemeProvider
       ],
       child: MyApp(),
     ),

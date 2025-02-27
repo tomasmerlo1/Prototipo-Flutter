@@ -36,4 +36,4 @@ flutter:
 
   assets:
   - images/ultimo.png
-  
+  - .env
