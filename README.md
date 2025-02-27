@@ -43,7 +43,10 @@ Pasos para instalar y configurar tu proyecto localmente.
 
     Copia el archivo `.env` a tu  `.env` y edítalo según sea su ip.
    Que lo busca en CMD y pone ipconfig y va hasta la linea  Dirección IPv4 y copia su ip y lo coloca en lugar del mio
-- 
+   
+## Uso
+El proyecto fue realizado y probado en una virtualización del Pixel 8 Android 15.0("VanillaIceCream") x86_64
+
 ## Funcionamiento
 Desde la pantalla principal se puede apreciar un menu touch en la parte de abajo, donde si apretas una de esos iconos , veras la parte de noticias, buscador y perfil. en la parte sueperior derecha vas a encontrar el modo noche o dia y para iniciar sesion 
 
