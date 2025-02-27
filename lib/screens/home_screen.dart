@@ -137,7 +137,10 @@ class _HomeScreenState extends State<HomeScreen> {
                           height: double.infinity,
                           fit: BoxFit.cover,
                           placeholder: (context, url) => const Center(child: CircularProgressIndicator()),
-                          errorWidget: (context, url, error) => Image.asset('assets/imagenes/ultimomomento.jpg'), // Placeholder local
+                          errorWidget: (context, url, error) {
+                            print('Error loading image: $url - $error'); // Imprime el error
+                            return Image.asset('images/ultimo.png'); // Placeholder local
+                          },
                         ),
                       ),
                       Positioned(
@@ -194,7 +197,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       height: 50,
                       fit: BoxFit.cover,
                       placeholder: (context, url) => const Center(child: CircularProgressIndicator()),
-                      errorWidget: (context, url, error) => Image.asset('assets/imagenes/ultimomomento.jpg'), // Placeholder local
+                      errorWidget: (context, url, error) {
+                        print('Error loading image: $url - $error'); // Imprime el error
+                        return Image.asset('images/ultimo.png'); // Placeholder local
+                      },
                     ),
                     title: Text(title, maxLines: 2, overflow: TextOverflow.ellipsis),
                     subtitle: Text(source),
