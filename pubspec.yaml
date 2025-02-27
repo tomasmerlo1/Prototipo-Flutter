@@ -19,7 +19,11 @@ dependencies:
   provider: ^6.1.2
   shared_preferences: ^2.2.2
   url_launcher: ^6.3.1
+<<<<<<< HEAD
   carousel_slider: ^5.0.0
+=======
+  flutter_dotenv: ^5.2.1 
+>>>>>>> 9a9dd589d8a05803fec2f03e296133a36c603473
 
 
 dev_dependencies:
