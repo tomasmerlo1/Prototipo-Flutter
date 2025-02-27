@@ -16,7 +16,7 @@ Creamos una aplicacion que trae las noticias de Argentina y el mundo a traves de
 - [Screens](#screens)
 - [Services](#services)
 - [Widgets](#widgets)
-- [Pantallas](#pantallas))
+- [Pantallas](#pantallas)
 - [Uso](#uso)
 
   
