@@ -37,7 +37,7 @@ Pasos para instalar y configurar tu proyecto localmente.
 
 3.  **Configurar variables de entorno:**
 
-    Copia el archivo `.env.example` a `.env` y edítalo según tu IP.
+    Copia el archivo `.env` a tu  `.env` y edítalo según sea su ip.
     Para encontrar tu IP, abre el Símbolo del Sistema (CMD), escribe `ipconfig` y busca la línea "Dirección IPv4". Copia tu IP y colócala en el archivo `.env`.
 
 ## Uso
