@@ -1,7 +1,5 @@
 # ARG Noticias - Simulador de Noticias App
 
-Creamos una aplicación que trae las noticias de Argentina y el mundo a través de una API. Usa fundamentos de Flutter y widgets.
-
 ## Integrantes
 
 * Macarena Huarte
