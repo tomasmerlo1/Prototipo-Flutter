@@ -9,45 +9,50 @@ class NoticiasCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: EdgeInsets.all(10),
-      elevation: 4,
+      margin: EdgeInsets.all(8),
+      elevation: 2,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10),
-        side: BorderSide(color: Colors.grey.shade300),
+        borderRadius: BorderRadius.circular(8),
       ),
       child: Padding(
         padding: const EdgeInsets.all(12.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: Row( // Usamos Row para alinear imagen y texto
+          crossAxisAlignment: CrossAxisAlignment.start, // Alinea los elementos en la parte superior
           children: [
-            if (noticia.imagen.isNotEmpty)
-              Center(
-                child: Image.network( // Cambia Image.asset() a Image.network()
+            if (noticia.imagen != null && noticia.imagen.isNotEmpty) // Imagen si está disponible
+              Padding(
+                padding: const EdgeInsets.only(right: 8.0), // Espacio entre imagen y texto
+                child: Image.network(
                   noticia.imagen,
-                  width: 120,
+                  width: 80, // Ajusta el ancho de la imagen
+                  height: 80, // Ajusta la altura de la imagen
                   fit: BoxFit.cover,
                 ),
               ),
-            SizedBox(height: 8),
-            Center(
-              child: Text(
-                noticia.titulo,
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-                textAlign: TextAlign.center,
+            Expanded( // Expande el texto para ocupar el espacio restante
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    noticia.titulo,
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(height: 4),
+                  if (noticia.descripcion != null && noticia.descripcion.isNotEmpty)
+                    Text(
+                      noticia.descripcion,
+                      style: TextStyle(fontSize: 14),
+                    ),
+                  SizedBox(height: 4),
+                  if (noticia.autor != null && noticia.autor.isNotEmpty)
+                    Text('Autor: ${noticia.autor}', style: TextStyle(fontSize: 12, color: Colors.grey)),
+                  if (noticia.fecha != null && noticia.fecha.isNotEmpty)
+                    Text('Fecha: ${noticia.fecha}', style: TextStyle(fontSize: 12, color: Colors.grey)),
+                  if (noticia.categoria != null)
+                    Text('Categoría: ${noticia.categoria is List ? noticia.categoria.join(', ') : noticia.categoria.toString()}', style: TextStyle(fontSize: 12, color: Colors.grey)),
+                ],
               ),
             ),
-            SizedBox(height: 4),
-            Center(
-              child: Text(
-                noticia.descripcion,
-                textAlign: TextAlign.center,
-              ),
-            ),
-            SizedBox(height: 8),
-            Text('Autor: ${noticia.autor ?? 'Desconocido'}'),
           ],
         ),
       ),
