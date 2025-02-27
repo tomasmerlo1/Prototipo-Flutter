@@ -2,10 +2,10 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class NewsApi {
-  final String _apiKey = '92506cef0cb18679bc9f7303c333bf51';
+  final String _apiKey = '9e4de6acaf1ea61c4c40fbf1206831e0';
   final String _baseUrl = 'http://api.mediastack.com/v1/news';
 
-  // Método que hace la solicitud a la API
+ 
   Future<List<dynamic>> fetchNews({String language = 'es', String country = 'ar'}) async {
     final url = Uri.parse('$_baseUrl?access_key=$_apiKey&languages=$language&countries=$country');
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:aplication_noticias/services/news_api.dart';
-import 'package:aplication_noticias/screens/noticias_detalle_screen.dart';
+import 'package:aplication_noticias/models/noticias_model.dart';
+import 'package:aplication_noticias/widgets/noticias_card.dart'; 
 
 class NoticiasScreen extends StatefulWidget {
   const NoticiasScreen({super.key});
@@ -36,32 +37,8 @@ class _NoticiasScreenState extends State<NoticiasScreen> {
               itemCount: articles.length,
               itemBuilder: (context, index) {
                 final article = articles[index];
-                return Card(
-                  margin: EdgeInsets.all(10),
-                  child: ListTile(
-                    leading: article['image'] != null
-                        ? Image.network(article['image'], width: 100, fit: BoxFit.cover)
-                        : null,
-                    title: Text(article['title'] ?? 'Sin título'),
-                    subtitle: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(article['description'] ?? 'Sin descripción'),
-                        Text('Autor: ${article['author'] ?? 'Desconocido'}'),
-                        Text('Fecha: ${article['published_at'] ?? 'Sin fecha'}'),
-                        Text('Categoría: ${article['category'] is List ? article['category'].join(', ') : article['category'] ?? 'Sin categoría'}'),
-                      ],
-                    ),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => NoticiaDetalleScreen(noticia: article),
-                        ),
-                      );
-                    },
-                  ),
-                );
+                final noticia = Noticias.fromJson(article);
+                return NoticiasCard(noticia: noticia); 
               },
             );
           }
@@ -70,4 +47,3 @@ class _NoticiasScreenState extends State<NoticiasScreen> {
     );
   }
 }
-
