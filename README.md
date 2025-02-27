@@ -48,28 +48,28 @@ Pasos para instalar y configurar tu proyecto localmente.
 Desde la pantalla principal se puede apreciar un menu touch en la parte de abajo, donde si apretas una de esos iconos , veras la parte de noticias, buscador y perfil. en la parte sueperior derecha vas a encontrar el modo noche o dia y para iniciar sesion 
 
 ## Models
-*noticias_model.dart
+* noticias_model.dart
 
 ## Providers
-*news_provider.dart
-*theme_provider.dart
+* news_provider.dart
+* theme_provider.dart
 
 ## Screens
-*home_screen.dart
-*login_screen.dart
-*main_screen.dart
-*noticias_detalle_api_screen.dart
-*Noticias_screen.dart
-*search_screen.dart
-*settings_screen.dart
+* home_screen.dart
+* login_screen.dart
+* main_screen.dart
+* noticias_detalle_api_screen.dart
+* Noticias_screen.dart
+* search_screen.dart
+* settings_screen.dart
 
 ## Services
-*news_api.dart
-*shared_prefs_service.dart
-*weather_api.dart
+* news_api.dart
+* shared_prefs_service.dart
+* weather_api.dart
 
 ## Widgets
-*noticias_card.dart
+* noticias_card.dart
 
 ## Pantallas
 - Home
@@ -77,8 +77,8 @@ Desde la pantalla principal se puede apreciar un menu touch en la parte de abajo
 <img src="./readme/images/homeoscuro.png" />
 
 - Noticias
-<img src="./readme/images/noticiasclaro.png" />
-<img src="./readme/images/noticiasoscuro.png" />
+<img src="./readme/images/noticiasclaras.png" />
+<img src="./readme/images/noticiasoscuras.png" />
 
 - Configuraciones/Perfil
 <img src="./readme/images/perfilclaro.png" />
